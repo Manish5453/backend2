@@ -7,6 +7,14 @@
  })
 
  connectDB()
+ .then(() => {
+    app.listen(process.env.PORT ||8000, () => {
+        console.log('Server is running at port : ${process.env.PORT}');
+    })
+ })
+ .catch((err) => {
+    console.log("MONGO db connection failed!!", err)
+ })
 
 
 
@@ -15,7 +23,7 @@
  import {DB_NAME} from "./constants"
  (async () => {
     try{
-        mongoose.connect{`${process.env.
+        await mongoose.connect{`${process.env.
         MONGODB_URL}/${DB_NAME}`}
         app.on("error", (error) =>{
             console.log("ERRR", error);
